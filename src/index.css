@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  font-family: "Quicksand";
+}
+
+/* html, body {
+    overflow: hidden;
+  }
+  
+body{
+    font-family: "Quicksand";
+    color: #333;
+  } */
+
+/* Card flip animations */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* src/index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /* overflow: hidden; */
+  font-family: "Quicksand";
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

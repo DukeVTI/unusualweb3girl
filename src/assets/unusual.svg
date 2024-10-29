@@ -1,0 +1,83 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-gradient {
+      fill: url(#bg-gradient);
+    }
+
+    .ethereum-icon {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .blockchain-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 5s ease-in-out forwards;
+    }
+
+    .data-cube {
+      transform-origin: center;
+      animation: rotate 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d3748" />
+      <stop offset="100%" stop-color="#1a202c" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" class="bg-gradient" />
+
+  <g class="ethereum-icon" transform="translate(100, 200)">
+    <path 
+      d="M400 200L200 400L400 600L600 400Z"
+      fill="#627eea"
+    />
+    <path
+      d="M400 200L200 400L400 300L600 400Z"  
+      fill="#8a92b2"
+    />
+  </g>
+
+  <path 
+    class="blockchain-line"
+    d="M200 300 C300 100, 500 100, 600 300 S700 500, 800 300"
+    fill="none"
+    stroke="#38b2ac"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <g class="data-cube" transform="translate(600, 400)">
+    <rect x="-30" y="-30" width="60" height="60" fill="#4fd1c5" />
+    <rect x="-20" y="-20" width="40" height="40" fill="#38b2ac" />
+    <rect x="-10" y="-10" width="20" height="20" fill="#319795" />
+  </g>
+</svg>

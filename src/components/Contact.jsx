@@ -115,7 +115,7 @@ export const ContactPage = () => {
     { 
       icon: <BsMedium size={24} />,
       label: "Medium",
-      href: "#",
+      href: "https://medium.com/@dupsyadeola/exploring-the-roles-of-cryptocurrency-in-web3-applications-89f49fc17713",
       username: "@unusualweb3girl"
     },
     { 

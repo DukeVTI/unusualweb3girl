@@ -15,7 +15,7 @@ const Portfolio = () => {
     {
       icon: <BsMedium size={24} className="relative z-10" />,
       label: "Medium",
-      href: "#",
+      href: "https://medium.com/@dupsyadeola/exploring-the-roles-of-cryptocurrency-in-web3-applications-89f49fc17713",
       color: "hover:bg-black",
     },
     {

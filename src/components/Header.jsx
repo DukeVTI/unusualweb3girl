@@ -165,7 +165,7 @@ const Header = () => {
           ))}
           
           <a
-            href="https://linktr.ee/yourprofile"
+            href="https://linktr.ee/unusualweb3girl"
             target="_blank"
             rel="noopener noreferrer"
             className={`block px-4 py-3 rounded-lg transition-all duration-300 ${

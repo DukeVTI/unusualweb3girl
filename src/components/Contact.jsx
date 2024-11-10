@@ -5,7 +5,7 @@ import { RiTelegramLine } from 'react-icons/ri';
 import { BsMedium } from 'react-icons/bs';
 import { useDarkMode } from './DarkModeContext';
 import ContactForm from './ContactForm';
-import Header from './header';
+import Header from './Header';
 
 // Content Page Component
 export const ContentPage = () => {

@@ -5,12 +5,11 @@ import { createRoot } from 'react-dom/client'
 
 import Portfolio from './uuu'
 import './index.css'
+import GemQuest from './gem'
+import App from './Apps'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Portfolio />
-
-    {/* <App /> */}
-    {/* <WordPuzzleGame/> */}
+    <App />
   </StrictMode>
 )

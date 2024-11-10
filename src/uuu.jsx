@@ -1,200 +1,156 @@
-import React, { useState } from 'react';
-import {
-  Github,
-  Twitter,
-  Mail,
-  ExternalLink,
-  Menu,
-  X,
-  ArrowUpRight,
-  Sun,
-  Moon
-} from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { BsMedium } from "react-icons/bs";
+import { Twitter, Mail } from "lucide-react";
+import { useDarkMode } from "./components/DarkModeContext";
 
 const Portfolio = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDarkMode } = useDarkMode();
+  const [isVisible, setIsVisible] = useState(false);
 
-  const projects = [
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const socialLinks = [
     {
-      title: "DeFi Yield Optimizer",
-      description: "A sophisticated DeFi platform optimizing yields across multiple protocols",
-      tech: ["Solidity", "React", "Web3"],
-      impact: "$2.5M TVL"
+      icon: <BsMedium size={24} className="relative z-10" />,
+      label: "Medium",
+      href: "#",
+      color: "hover:bg-black",
     },
     {
-      title: "NFT Marketplace",
-      description: "Marketplace for digital collectibles with advanced trading features",
-      tech: ["Next.js", "IPFS", "TypeScript"],
-      impact: "10K+ Collections"
+      icon: <Twitter size={24} className="relative z-10" />,
+      label: "Twitter",
+      href: "https://x.com/unusualweb3lady?s=21",
+      color: "hover:bg-blue-400",
     },
     {
-      title: "DAO Governance",
-      description: "Decentralized governance platform for community decision-making",
-      tech: ["Solidity", "TheGraph", "React"],
-      impact: "50K+ Votes"
-    }
+      icon: <Mail size={24} className="relative z-10" />,
+      label: "Email",
+      href: "mailto:dupsyadeola@gmail.com",
+      color: "hover:bg-red-500",
+    },
   ];
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const stats = [
+    {
+      value: "100K+",
+      label: "Social Followers",
+      description: "Engaged community members across platforms",
+    },
+    {
+      value: "200+",
+      label: "Articles Published",
+      description: "In-depth Web3 educational content",
+    },
+    {
+      value: "50+",
+      label: "Projects",
+      description: "Successful collaborations and launches",
+    },
+    {
+      value: "1M+",
+      label: "Content Views",
+      description: "Global reach and impact",
+    },
+  ];
+
+  // Stat Card Component
+  const StatCard = ({ stat }) => (
+    <div
+      className={`p-6 rounded-xl border transition-all duration-300 hover:border-emerald-400/50 ${
+        isDarkMode
+          ? "bg-gray-900/50 border-gray-800"
+          : "bg-white border-gray-200"
+      }`}
+    >
+      <div
+        className={`text-3xl font-bold mb-2 ${
+          isDarkMode ? "text-emerald-400" : "text-emerald-600"
+        }`}
+      >
+        {stat.value}
+      </div>
+      <div className="font-medium mb-2">{stat.label}</div>
+      <div
+        className={`text-sm ${
+          isDarkMode ? "text-gray-400" : "text-gray-600"
+        }`}
+      >
+        {stat.description}
+      </div>
+    </div>
+  );
+
+  // Social Link Component
+  const SocialLink = ({ item }) => (
+    <a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`relative p-4 rounded-xl border group transition-all duration-300 ${
+        isDarkMode
+          ? "border-gray-800 hover:border-emerald-400/50 bg-gray-900/50"
+          : "border-gray-200 hover:border-emerald-600/50 bg-white"
+      }`}
+    >
+      <div className="flex items-center space-x-3">
+        <div
+          className={`relative rounded-lg overflow-hidden ${
+            isDarkMode ? "text-emerald-400" : "text-emerald-600"
+          }`}
+        >
+          {item.icon}
+        </div>
+        <span className="font-medium">{item.label}</span>
+      </div>
+    </a>
+  );
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition-colors duration-300`}>
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 backdrop-blur-sm bg-opacity-70 border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <span className="text-xl font-bold">UW3G</span>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#projects" className="hover:text-green-500 transition-colors">Projects</a>
-              <a href="#experience" className="hover:text-green-500 transition-colors">Experience</a>
-              <a href="#contact" className="hover:text-green-500 transition-colors">Contact</a>
-              <button 
-                onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            </div>
-
-            {/* Mobile menu button */}
-            <button 
-              className="md:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className={`px-4 pt-2 pb-3 space-y-1 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
-              <a href="#projects" className="block px-3 py-2 hover:text-green-500">Projects</a>
-              <a href="#experience" className="block px-3 py-2 hover:text-green-500">Experience</a>
-              <a href="#contact" className="block px-3 py-2 hover:text-green-500">Contact</a>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
+    <div
+      className={`min-h-screen ${
+        isDarkMode ? "bg-gray-950 text-gray-100" : "bg-gray-50 text-gray-900"
+      }`}
+    >
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-6xl font-bold mb-6">Building the Future of Web3</h1>
-          <p className="text-xl max-w-2xl mb-8 text-gray-600 dark:text-gray-400">
-            Community builder and content creator bridging the gap between Web3 projects and their audiences 
-            through strategic engagement and creative storytelling.
-          </p>
-          <div className="flex gap-4">
-            {[
-              { icon: <Github size={20} />, label: "GitHub" },
-              { icon: <Twitter size={20} />, label: "Twitter" },
-              { icon: <Mail size={20} />, label: "Email" },
-            ].map((item, i) => (
-              <button
-                key={i}
-                className={`p-3 rounded-full border ${
-                  isDarkMode 
-                    ? 'border-gray-800 hover:border-gray-700' 
-                    : 'border-gray-200 hover:border-gray-300'
-                } transition-colors`}
+          <div
+            className={`transition-all duration-700 transform ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
+          >
+            {/* Hero Section */}
+            <div className="max-w-3xl mb-16">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                Making <span className="text-emerald-400">Web3</span> Accessible
+              </h1>
+              <p
+                className={`text-xl md:text-2xl leading-relaxed ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}
               >
-                {item.icon}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+                Web3 content creator and community builder passionate about
+                making blockchain technology understandable and accessible to
+                everyone.
+              </p>
+            </div>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, i) => (
-              <div 
-                key={i}
-                className={`p-6 rounded-xl border ${
-                  isDarkMode 
-                    ? 'border-gray-800 hover:border-gray-700' 
-                    : 'border-gray-200 hover:border-gray-300'
-                } transition-all duration-300 hover:scale-[1.02]`}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <ArrowUpRight className="text-green-500" size={20} />
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, j) => (
-                    <span
-                      key={j}
-                      className={`px-3 py-1 text-sm rounded-full ${
-                        isDarkMode 
-                          ? 'bg-gray-800 text-gray-300' 
-                          : 'bg-gray-100 text-gray-700'
-                      }`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-green-500 font-medium">{project.impact}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {/* Stats Grid */}
+            <div className="grid md:grid-cols-4 gap-6 mb-16">
+              {stats.map((stat, i) => (
+                <StatCard key={i} stat={stat} />
+              ))}
+            </div>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-bold mb-8">Let's Connect</h2>
-            <form className="space-y-6">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className={`w-full px-4 py-3 rounded-lg border ${
-                    isDarkMode 
-                      ? 'bg-gray-800 border-gray-700 focus:border-green-500' 
-                      : 'bg-white border-gray-200 focus:border-green-500'
-                  } outline-none transition-colors`}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className={`w-full px-4 py-3 rounded-lg border ${
-                    isDarkMode 
-                      ? 'bg-gray-800 border-gray-700 focus:border-green-500' 
-                      : 'bg-white border-gray-200 focus:border-green-500'
-                  } outline-none transition-colors`}
-                />
-              </div>
-              <div>
-                <textarea
-                  rows={4}
-                  placeholder="Message"
-                  className={`w-full px-4 py-3 rounded-lg border ${
-                    isDarkMode 
-                      ? 'bg-gray-800 border-gray-700 focus:border-green-500' 
-                      : 'bg-white border-gray-200 focus:border-green-500'
-                  } outline-none transition-colors resize-none`}
-                />
-              </div>
-              <button className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
-                Send Message
-              </button>
-            </form>
+            {/* Social Links */}
+            <div className="flex flex-wrap gap-4">
+              {socialLinks.map((item, i) => (
+                <SocialLink key={i} item={item} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

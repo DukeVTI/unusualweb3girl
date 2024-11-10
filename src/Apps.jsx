@@ -1,26 +1,24 @@
-// src/App.jsx
-import React from 'react';
-import Player from './games/JumperGame/Components/Player';
-import useGameLogic from './games/JumperGame/Hooks/useGameLogic';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Portfolio from "./uuu";
+import ExperiencePage from "./components/Experience";
+import { ContentPage, ContactPage } from "./components/Contact";
+import { DarkModeProvider } from "./components/DarkModeContext";
+import Header from "./components/header";
 
-const Apps = () => {
-  const { playerPosition, handleJump } = useGameLogic();
-
+function App() {
   return (
-    <div
-      className="game-container"
-      style={{
-        position: 'relative',
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: '#e0f7fa',
-        overflow: 'hidden',
-      }}
-      onClick={handleJump}
-    >
-      <Player position={playerPosition} />
-    </div>
+    <DarkModeProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/content" element={<ContentPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </BrowserRouter>
+    </DarkModeProvider>
   );
-};
+}
 
-export default Apps;
+export default App;

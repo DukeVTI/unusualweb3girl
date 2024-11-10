@@ -3,7 +3,7 @@ import Portfolio from "./uuu";
 import ExperiencePage from "./components/Experience";
 import { ContentPage, ContactPage } from "./components/Contact";
 import { DarkModeProvider } from "./components/DarkModeContext";
-import Header from "./components/header";
+import Header from "./components/Header";
 
 function App() {
   return (

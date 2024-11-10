@@ -1,45 +1,58 @@
-import React from 'react';
-import { ArrowLeft, ArrowUpRight, Mail, Twitter } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { RiTelegramLine } from 'react-icons/ri';
-import { BsMedium } from 'react-icons/bs';
-import { useDarkMode } from './DarkModeContext';
-import ContactForm from './ContactForm';
-import Header from './Header';
+import React from "react";
+import { ArrowLeft, ArrowUpRight, Mail, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
+import { RiTelegramLine } from "react-icons/ri";
+import { BsMedium } from "react-icons/bs";
+import { useDarkMode } from "./DarkModeContext";
+import ContactForm from "./ContactForm";
+import Header from "./Header";
 
 // Content Page Component
 export const ContentPage = () => {
   const { isDarkMode } = useDarkMode();
-  
+
   const content = [
     {
-      title: "Web3 Educational Series",
-      description: "Breaking down complex DeFi concepts into digestible content for newcomers",
-      platforms: ["YouTube", "Medium", "Twitter"],
-      impact: "500K+ Views",
-      details: "Created comprehensive guides and tutorials on DeFi protocols, yield farming strategies, and blockchain fundamentals. Specialized in making complex topics accessible to beginners."
+      title: "SMM Tips and Tools",
+      description:
+        "Insights on managing social media accounts naturally with effective tools and platforms",
+      platforms: ["Twitter", "Telegram"],
+      link: "https://x.com/unusualweb3lady/status/1854105413513253205?s=46",
+      impact: "Engaged community with valuable SMM strategies",
+      details:
+        "Shared personal experiences and recommended tools for social media management, including post schedulers (Hootsuite, Buffer), meme generators, and crypto news sources (Crypto Slate, Coin Desk). Emphasized the importance of audience understanding, knowledge of crypto, and being strategic with content to convert users.",
     },
     {
-      title: "NFT Community Management",
-      description: "Built and managed a thriving NFT community from launch to successful mint",
-      platforms: ["Discord", "Twitter", "Telegram"],
-      impact: "25K+ Members",
-      details: "Developed engagement strategies, moderated community channels, and coordinated successful NFT launches. Created educational content about NFT technology and market trends."
+      title: "Handling Social Media Effectively",
+      link: "https://x.com/unusualweb3lady/status/1855158917266894873?s=46",
+      description:
+        "Tips on managing trolls, staying authentic, and engaging with content strategically.",
+      platforms: ["Twitter"],
+      impact: "Practical advice for content creators and social media managers",
+      details:
+        "Shared tips for handling trolls, using humor, staying concise, and remaining transparent in social media interactions. Emphasized the importance of engaging with relevant content, staying updated with trends, and managing social media effectively as a content writer and SMM.",
     },
     {
-      title: "DeFi Weekly Newsletter",
-      description: "Curated insights on the latest DeFi trends, protocols, and opportunities",
-      platforms: ["Substack", "Twitter", "Telegram"],
-      impact: "15K+ Subscribers",
-      details: "Analyzed emerging DeFi protocols, provided market insights, and highlighted investment opportunities. Built a dedicated reader base through consistent, high-quality content."
-    }
+      title: "DeFi Protocol Insights",
+      link: "https://x.com/deeonlyunusual/status/1854828450399301937?s=46",
+      description:
+        "Exploring the latest DeFi protocols like lending, DEXs, cross-chain solutions, oracles, governance, and yield farming.",
+      platforms: ["Twitter", "Telegram"],
+      impact: "Engaged community sharing crypto protocol insights",
+      details:
+        "Highlighted key DeFi protocols enabling lending, peer-to-peer trading, blockchain interoperability, data verification, decentralized governance, and yield farming. Focused on providing valuable insights to users and investors.",
+    },
   ];
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? "bg-gray-950 text-gray-100" : "bg-gray-50 text-gray-900"}`}>
+    <div
+      className={`min-h-screen ${
+        isDarkMode ? "bg-gray-950 text-gray-100" : "bg-gray-50 text-gray-900"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="inline-flex items-center text-emerald-400 hover:text-emerald-300 mb-8 transition-colors"
         >
           <ArrowLeft className="mr-2" size={20} />
@@ -50,20 +63,32 @@ export const ContentPage = () => {
 
         <div className="space-y-8">
           {content.map((item, i) => (
-            <div 
+            <div
               key={i}
               className={`rounded-xl p-8 border transition-all duration-300 hover:border-emerald-400/50 ${
-                isDarkMode 
-                  ? "bg-gray-900/50 border-gray-800" 
+                isDarkMode
+                  ? "bg-gray-900/50 border-gray-800"
                   : "bg-white border-gray-200"
               }`}
             >
               <div className="flex justify-between items-start mb-4">
-                <h2 className="text-2xl font-bold text-emerald-400">{item.title}</h2>
-                <ArrowUpRight className="text-emerald-400" size={20} />
+                <h2 className="text-2xl font-bold text-emerald-400">
+                  {item.title}
+                </h2>
+                <a href={item.link}>
+                  <ArrowUpRight className="text-emerald-400" size={20} />
+                </a>
               </div>
-              <p className={`mb-6 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{item.description}</p>
-              <p className={isDarkMode ? "text-gray-300" : "text-gray-700"}>{item.details}</p>
+              <p
+                className={`mb-6 ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                {item.description}
+              </p>
+              <p className={isDarkMode ? "text-gray-300" : "text-gray-700"}>
+                {item.details}
+              </p>
               <div className="flex flex-wrap gap-3 mb-4">
                 {item.platforms.map((platform, j) => (
                   <span
@@ -82,22 +107,28 @@ export const ContentPage = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className={`mt-16 rounded-xl p-8 border transition-all duration-300 ${
-          isDarkMode 
-            ? "bg-gray-900/50 border-gray-800" 
-            : "bg-white border-gray-200"
-        }`}>
+        <div
+          className={`mt-16 rounded-xl p-8 border transition-all duration-300 ${
+            isDarkMode
+              ? "bg-gray-900/50 border-gray-800"
+              : "bg-white border-gray-200"
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-8">Content Impact</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: "500K+", label: "Total Views" },
               { value: "50+", label: "Tutorials Created" },
               { value: "100+", label: "Articles Published" },
-              { value: "30+", label: "Project Features" }
+              { value: "30+", label: "Project Features" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <div className="text-3xl font-bold text-emerald-400">{stat.value}</div>
-                <div className={isDarkMode ? "text-gray-400" : "text-gray-600"}>{stat.label}</div>
+                <div className="text-3xl font-bold text-emerald-400">
+                  {stat.value}
+                </div>
+                <div className={isDarkMode ? "text-gray-400" : "text-gray-600"}>
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -112,42 +143,51 @@ export const ContactPage = () => {
   const { isDarkMode } = useDarkMode();
 
   const socialLinks = [
-    { 
+    {
       icon: <BsMedium size={24} />,
       label: "Medium",
       href: "https://medium.com/@dupsyadeola/exploring-the-roles-of-cryptocurrency-in-web3-applications-89f49fc17713",
-      username: "@unusualweb3girl"
+      username: "@unusualweb3girl",
     },
-    { 
+    {
       icon: <Twitter size={24} />,
       label: "Twitter",
       href: "https://x.com/unusualweb3lady?s=21",
-      username: "@Unusualweb3girl"
+      username: "@Unusualweb3girl",
     },
-    { 
+    {
       icon: <RiTelegramLine size={24} />,
       label: "Telegram",
       href: "https://t.me/unusualdefi",
-      username: "@unusualdefi"
+      username: "@unusualdefi",
     },
-    { 
+    {
       icon: <Mail size={24} />,
       label: "Email",
       href: "mailto:dupsyadeola@gmail.com",
-      username: "dupsyadeola@gmail.com"
-    }
+      username: "dupsyadeola@gmail.com",
+    },
   ];
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? "bg-gray-950 text-gray-100" : "bg-gray-50 text-gray-900"}`}>
+    <div
+      className={`min-h-screen ${
+        isDarkMode ? "bg-gray-950 text-gray-100" : "bg-gray-50 text-gray-900"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="grid md:grid-cols-2 gap-16">
           {/* Contact Form Section */}
           <div>
             <h1 className="text-4xl font-bold mb-8">Let's Connect</h1>
-            <p className={`mb-8 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-              Have a project in mind or want to collaborate? I'd love to hear from you. 
-              Feel free to reach out through the form or any of my social channels.
+            <p
+              className={`mb-8 ${
+                isDarkMode ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              Have a project in mind or want to collaborate? I'd love to hear
+              from you. Feel free to reach out through the form or any of my
+              social channels.
             </p>
             <ContactForm />
           </div>
@@ -161,8 +201,8 @@ export const ContactPage = () => {
                   key={i}
                   href={link.href}
                   className={`flex items-center p-4 rounded-lg border transition-all duration-300 hover:border-emerald-400/50 ${
-                    isDarkMode 
-                      ? "bg-gray-900/50 border-gray-800" 
+                    isDarkMode
+                      ? "bg-gray-900/50 border-gray-800"
                       : "bg-white border-gray-200"
                   }`}
                 >
@@ -171,21 +211,31 @@ export const ContactPage = () => {
                   </div>
                   <div>
                     <div className="font-medium">{link.label}</div>
-                    <div className={isDarkMode ? "text-gray-400" : "text-gray-600"}>{link.username}</div>
+                    <div
+                      className={isDarkMode ? "text-gray-400" : "text-gray-600"}
+                    >
+                      {link.username}
+                    </div>
                   </div>
                 </a>
               ))}
             </div>
 
             {/* Additional Contact Info */}
-            <div className={`mt-12 p-6 rounded-lg border transition-all duration-300 ${
-              isDarkMode 
-                ? "bg-gray-900/50 border-gray-800" 
-                : "bg-white border-gray-200"
-            }`}>
+            <div
+              className={`mt-12 p-6 rounded-lg border transition-all duration-300 ${
+                isDarkMode
+                  ? "bg-gray-900/50 border-gray-800"
+                  : "bg-white border-gray-200"
+              }`}
+            >
               <h3 className="font-medium mb-2">Working Hours</h3>
-              <p className={isDarkMode ? "text-gray-400" : "text-gray-600"}>Available Monday to Friday</p>
-              <p className={isDarkMode ? "text-gray-400" : "text-gray-600"}>9:00 AM - 6:00 PM UTC</p>
+              <p className={isDarkMode ? "text-gray-400" : "text-gray-600"}>
+                Available Monday to Friday
+              </p>
+              <p className={isDarkMode ? "text-gray-400" : "text-gray-600"}>
+                9:00 AM - 6:00 PM UTC
+              </p>
             </div>
           </div>
         </div>
